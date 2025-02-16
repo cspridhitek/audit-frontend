@@ -1,13 +1,16 @@
 // src/app/audit/audit-log/audit-log.component.ts
 import { Component, OnInit } from '@angular/core';
-import { AuditService } from '../../services/audit.service';
+import { CommonModule } from '@angular/common';  // Import this for @for support
+import { AuditService } from '../services/audit.service';
 import { AuditLog } from './audit-log.model';
 
 @Component({
   selector: 'app-audit-log',
   templateUrl: './audit-log.component.html',
   styleUrls: ['./audit-log.component.css'],
-  standalone: true
+  standalone: true,
+  imports: [CommonModule],  // ✅ Required for @for support
+
 })
 export class AuditLogComponent implements OnInit {
   auditLogs: AuditLog[] = [];
@@ -46,5 +49,9 @@ export class AuditLogComponent implements OnInit {
     a.setAttribute('href', url);
     a.setAttribute('download', 'audit_logs.csv');
     a.click();
+  }
+
+  trackByEntityId(index: number, log: AuditLog): string {
+    return log.entityId;
   }
 }

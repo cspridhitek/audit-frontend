@@ -1,52 +1,59 @@
-# Angular Audit Log Project
+# AuditFrontend
 
-This project is an Angular application designed to manage and display audit logs. It provides a structured way to view audit entries and is built with modular components and services.
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.7.
 
-## Project Structure
+## Development server
 
-```
-angular-project
-├── src
-│   ├── app
-│   │   ├── audit
-│   │   │   ├── audit-log
-│   │   │   │   ├── audit-log.component.html
-│   │   │   │   ├── audit-log.component.ts
-│   │   │   │   ├── audit-log.component.css
-│   │   ├── services
-│   │   │   ├── audit.service.ts
-│   ├── assets
-│   │   ├── styles.css
-├── package.json
+To start a local development server, run:
+
+```bash
+ng serve
 ```
 
-## Setup Instructions
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-1. **Clone the Repository**
-   ```bash
-   git clone <repository-url>
-   cd angular-project
-   ```
+## Code scaffolding
 
-2. **Install Dependencies**
-   Make sure you have Node.js and npm installed. Then run:
-   ```bash
-   npm install
-   ```
+Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-3. **Run the Application**
-   To start the development server, use:
-   ```bash
-   ng serve
-   ```
-   Navigate to `http://localhost:4200/` in your browser to view the application.
+```bash
+ng generate component component-name
+```
 
-## Usage Guidelines
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
-- The `AuditLogComponent` displays the audit logs fetched from the `AuditService`.
-- You can customize the styles in `src/assets/styles.css` and `src/app/audit/audit-log/audit-log.component.css` to fit your design needs.
-- The `AuditService` is responsible for retrieving audit log entries, which can be modified to connect to your data source.
+```bash
+ng generate --help
+```
 
-## Contributing
+## Building
 
-Feel free to submit issues or pull requests for improvements or bug fixes.
+To build the project run:
+
+```bash
+ng build
+```
+
+This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+
+## Running unit tests
+
+To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+
+```bash
+ng test
+```
+
+## Running end-to-end tests
+
+For end-to-end (e2e) testing, run:
+
+```bash
+ng e2e
+```
+
+Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Additional Resources
+
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
