@@ -1,7 +1,9 @@
 <div class="audit-log-container">
   <h2>Audit Logs</h2>
   
-  <input type="text" placeholder="Search logs..." [(ngModel)]="searchTerm" (input)="filterLogs()" />
+  <!--<input type="text" placeholder="Search logs..." [(ngModel)]="searchTerm" (input)="filterLogs()" />-->
+    <input type="text" placeholder="Search logs..."  (input)="filterLogs()" />
+
   <button (click)="exportToExcel()">Export to Excel</button>
   
   <table>
