@@ -7,7 +7,7 @@ import { AuditLog } from '../audit-log/audit-log.model';
   providedIn: 'root'
 })
 export class AuditService {
-  private apiUrl = 'http://localhost:8080/api/audit-logs';
+  private apiUrl = 'http://localhost:8080/api/audit';
 
   constructor(private http: HttpClient) {}
 

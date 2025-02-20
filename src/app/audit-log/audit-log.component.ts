@@ -26,6 +26,7 @@ export class AuditLogComponent implements OnInit {
   loadLogs(): void {
     this.auditService.getAuditLogs().subscribe(data => {
       this.auditLogs = data;
+      console.log(data);
       this.filteredLogs = data;
     });
   }
@@ -33,14 +34,14 @@ export class AuditLogComponent implements OnInit {
   filterLogs(): void {
     this.filteredLogs = this.auditLogs.filter(log =>
       log.entityName.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-      log.changedBy.toLowerCase().includes(this.searchTerm.toLowerCase())
+      log.userName.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
 
   exportToExcel(): void {
     let csvData = "Entity Name,Entity ID,Field,Old Value,New Value,Changed By,Changed At\n";
     this.filteredLogs.forEach(log => {
-      csvData += `${log.entityName},${log.entityId},${log.fieldName},${log.oldValue},${log.newValue},${log.changedBy},${log.changedAt}\n`;
+      csvData += `${log.entityName},${log.entityId},${log.fieldName},${log.oldValue},${log.newValue},${log.userName},${log.timestamp}\n`;
     });
 
     const blob = new Blob([csvData], { type: 'text/csv' });
@@ -51,7 +52,7 @@ export class AuditLogComponent implements OnInit {
     a.click();
   }
 
-  trackByEntityId(index: number, log: AuditLog): string {
-    return log.entityId;
+  trackByEntityId(index: number, log: AuditLog): number {
+    return index;
   }
 }
