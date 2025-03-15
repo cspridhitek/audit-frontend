@@ -9,24 +9,24 @@
   <table>
       <thead>
           <tr>
-              <th>Entity</th>
-              <th>Entity ID</th>
-              <th>Field</th>
+            <th>SNo.</th>
+            <th>Changed By</th>
+            <th>Action</th>
               <th>Old Value</th>
               <th>New Value</th>
-              <th>Changed By</th>
               <th>Changed At</th>
+              <th>Device Details</th>
           </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let log of filteredLogs; trackBy: trackByEntityId">
-          <td>{{ log.entityName }}</td>
-          <td>{{ log.entityId }}</td>
-          <td>{{ log.fieldName }}</td>
+        <tr *ngFor="let log of filteredLogs; trackBy: trackByEntityId; let i = index">
+          <td>{{ i+1 }}</td>
+          <td>{{ log.userName }}</td>
+          <td>{{ log.action }}</td>
           <td>{{ log.oldValue }}</td>
           <td>{{ log.newValue }}</td>
-          <td>{{ log.changedBy }}</td>
-          <td>{{ log.changedAt }}</td>
+          <td>{{ log.timestamp }}</td>
+          <td>{{ log.deviceDetails }}</td>
         </tr>
       </tbody>
   </table>
