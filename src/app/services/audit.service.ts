@@ -1,19 +1,24 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { AuditLog } from '../audit-log/audit-log.model';
+import { AuditResponse } from '../audit-log/audit-response.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuditService {
-  private apiUrl = 'http://localhost:8081/api/audit?page=0&size=10&sortBy=timestamp&sortDirection=desc';
+  private apiUrl = 'http://localhost:8081/api/audit';
 
   constructor(private http: HttpClient) {}
 
-  getAuditLogs(): Observable<AuditLog[]> {
-    return this.http.get<{ content: AuditLog[] }>(this.apiUrl).pipe(
-      map(response => response.content) // Extracts logs from `content`
-    );
+  getAuditLogs(pageNo: number, pageSize: number): Observable<AuditResponse> {
+    const params = new HttpParams()
+      .set('pageNo', pageNo.toString())
+      .set('pageSize', pageSize.toString())
+      .set('sortBy',"timestamp")
+      .set('soreDirection', "desc");
+
+    return this.http.get<AuditResponse>(this.apiUrl, { params });
   }
 }
